@@ -14,7 +14,7 @@ namespace ECommerce.Api.Products.Providers
     public class ProductsProvider : IProductsProvider
     {
         private readonly ProductsDbContext dbContext;
-        private ILogger<ProductsProvider> logger;
+        private readonly ILogger<ProductsProvider> logger;
         private readonly IMapper mapper;
 
         public ProductsProvider(ProductsDbContext dbContext, ILogger<ProductsProvider> logger, IMapper mapper)
@@ -54,6 +54,25 @@ namespace ECommerce.Api.Products.Providers
             {
                 logger?.LogError(ex.ToString());
                 return(false, null, ex.Message);
+            }
+        }
+        public async Task<(bool IsSuccess, Models.Product Product, string ErroMessage)> GetProductsAsync(int id)
+        {
+            try
+            {
+                var product = await dbContext.Products.FirstOrDefaultAsync(p => p.Id == id);
+                if (product != null)
+                {
+                    var result = mapper.Map<Db.Product, Models.Product>(product);
+                    return (true, result, null);
+                }
+                return (false, null, "Not Found");
+
+            }
+            catch (Exception ex)
+            {
+                logger?.LogError(ex.ToString());
+                return (false, null, ex.Message);
             }
         }
     }
