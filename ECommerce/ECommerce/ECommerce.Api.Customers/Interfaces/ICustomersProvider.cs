@@ -9,5 +9,7 @@ namespace ECommerce.Api.Customers.Interfaces
     public interface ICustomersProvider
     {
         Task<(bool IsSuccess, IEnumerable<Customer> Customers, string Message)> GetCustomersAsync();
+        Task<(bool IsSuccess, Customer Customer, string Message)> GetCustomersAsync(int id);
+
     }
 }
