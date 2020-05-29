@@ -30,7 +30,7 @@ namespace ECommerce.Api.Search.Services
                 {
                     foreach (var item in order.Items)
                     {
-                        item.ProductName = ProductResult.IsSuccess? ProductResult.Products.FirstOrDefault(p => p.Id == item.ProductId)?.Name : "Product information is not available at this time";
+                        item.ProductName = ProductResult.IsSuccess? ProductResult.Products.FirstOrDefault(p => p.Id == item.ProductId)?.Name : "Product information is not available at this time!";
                     }
                 }
                 var result = new
