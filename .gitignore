@@ -1,1 +1,6 @@
 /ECommerce/ECommerce/.vs/ECommerce
+/ECommerce/ECommerce/ECommerce.Api.Customers/bin/Debug/netcoreapp3.1
+/ECommerce/ECommerce/ECommerce.Api.Products/obj/Docker
+/ECommerce/ECommerce/ECommerce.Api.Search/obj/Docker
+/ECommerce/ECommerce/obj/Docker
+/ECommerce/ECommerce/ECommerce.Api.Customers/obj/Docker
